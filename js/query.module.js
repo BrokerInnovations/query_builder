@@ -4,7 +4,8 @@
 
     angular.module('query', [
         'ui.router',
-        'ngAnimate'
+        'ngAnimate',
+        'ngCsvImport'
     ]);
 
 })();

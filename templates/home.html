@@ -111,8 +111,14 @@
     </div>
   </section>
   <section class="row">
+
     <div class="col-md-6">
       <h3>Row</h3>
+      <ng-csv-import content="homeVm.csv"
+      	material
+      	separator="homeVm.seperator"
+      	result="homeVm.result">
+  	  </ng-csv-import>
       <table>
         <thead>
           <tr>
@@ -154,7 +160,7 @@
       <table>
         <thead>
           <tr>
-            <th>section_descr</th>
+            <th>section_desc</th>
             <th>zone_id</th>
             <th>level_id</th>
           </tr>
@@ -162,7 +168,7 @@
         <tbody ng-repeat="section in homeVm.sections track by $index">
           <tr>
             <td>
-              <input type="text" class="form-control" ng-model="section.section_descr" ng-disabled ="homeVm.zoneSectionDisabled">
+              <input type="text" class="form-control" ng-model="section.section_desc" ng-disabled ="homeVm.zoneSectionDisabled">
             </td>
             <td>
               <select ng-model="section.zone_descr" ng-disabled ="homeVm.zoneSectionDisabled">
@@ -200,4 +206,114 @@
       <span class="btn btn-primary btn-add" ng-click="homeVm.zoneSectionSubmit()">Submit</span>
     </div>
   </section>
+  <!-- <section class="row">
+    <div class="col-md-6">
+      <h3>Event</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>event_descr</th>
+            <th>event_date</th>
+            <th>venue_config_id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td>
+            <input type="text" class="form-control">
+          </td>
+          <td>
+            <input type="date" class="form-control">
+          </td>
+          <td>
+            <input type="text" class="form-control">
+          </td>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h3>Zone Event</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>event_id</th>
+            <th>zone_id</th>
+            <th>qty_to_broadcast</th>
+            <th>zone_base_price</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="eve in homeVm.zoneEvents track by $index">
+          <td>
+            <input type="text" class="form-control" ng-model="eve.event_id">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="eve.zone_id">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="eve.qty_to_broadcast">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="eve.zone_base_price">
+          </td>
+        </tbody>
+      </table>
+      <span class="btn btn-primary btn-add" ng-click="homeVm.addZoneEvent()">Add Section</span>
+      <span class="btn btn-primary btn-add" ng-click="homeVm.zoneEventSubmit()">Submit</span>
+    </div>
+  </section>
+  <section class="row">
+    <div class="col-md-6">
+      <h3>Section Event</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>section_id</th>
+            <th>event_id</th>
+            <th>section_price_offset_pct</th>
+            <th>venue_config_id</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="section in homeVm.sectionEvents track by $index">
+          <td>
+            <input type="text" class="form-control" ng-model="section.section_id">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="section.event_id">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="section.section_price_offset_pct">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="section.venue_config_id">
+          </td>
+        </tbody>
+      </table>
+      <span class="btn btn-primary btn-add" ng-click="homeVm.addSectionEvent()">Add Section</span>
+      <span class="btn btn-primary btn-add" ng-click="homeVm.sectionEventSubmit()">Submit</span>
+    </div>
+    <div class="col-md-6">
+      <h3>Row Event</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>row_id</th>
+            <th>event_id</th>
+            <th>row_price_offset_pct</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="row in homeVm.rowEvents track by $index">
+          <td>
+            <input type="text" class="form-control" ng-model="row.row_id">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="row.event_id">
+          </td>
+          <td>
+            <input type="text" class="form-control" ng-model="row.row_price_offset_pct">
+          </td>
+        </tbody>
+      </table>
+      <span class="btn btn-primary btn-add" ng-click="homeVm.addRowEvent()">Add Section</span>
+      <span class="btn btn-primary btn-add" ng-click="homeVm.rowEventSubmit()">Submit</span>
+    </div>
+  </section> -->
 </div>

@@ -10,15 +10,24 @@
     /* @ngInject */
     function HomeController($scope, $http) {
         var vm = this;
+        vm.seperator = ',';
+        vm.csv = '';
+        vm.result = '';
         vm.addVenue = addVenue;
         vm.addLevel = addLevel;
         vm.addZone = addZone;
         vm.addRow = addRow;
         vm.addZoneSection = addZoneSection;
+        vm.addZoneEvent = addZoneEvent;
+        vm.addSectionEvent = addSectionEvent;
+        vm.addRowEvent = addRowEvent;
         vm.zoneSubmit = zoneSubmit;
         vm.levelSubmit = levelSubmit;
         vm.venueSubmit = venueSubmit;
+        vm.rowEventSubmit = rowEventSubmit;
         vm.zoneSectionSubmit = zoneSectionSubmit;
+        vm.zoneEventSubmit = zoneEventSubmit;
+        vm.sectionEventSubmit = sectionEventSubmit;
         vm.rowSubmit = rowSubmit;
         vm.addConfigVenue = addConfigVenue;
         vm.venueConfigSubmit = venueConfigSubmit;
@@ -34,6 +43,26 @@
         vm.levels = [];
         vm.rows = [];
         vm.sections = [];
+        vm.zoneEvents = [];
+        vm.sectionEvents = [];
+        vm.rowEvents = [];
+        //vm.header = true;
+
+        //document.getElementByClass("md-input").attributes["type"] = "file";
+
+        $scope.$watch('homeVm.result', function(){
+            //console.log(vm.result);
+            var change = vm.result;
+            if(change) {
+                change.forEach(function(val) {
+                    //console.log(val);
+                    var row = {};
+                    row.row_descr = val['0'];
+                    row.row_seq_num = val['1'];
+                    vm.rows.push(row);
+                });
+            }
+        });
 
         function zoneSubmit() {
             vm.zoneDisabled = true;
@@ -95,6 +124,18 @@
             });
         }
 
+        function zoneEventSubmit() {
+            console.log(vm.zoneEvents);
+        }
+
+        function sectionEventSubmit() {
+            console.log(vm.sectionEvents);
+        }
+
+        function rowEventSubmit() {
+            console.log(vm.rowEvents);
+        }
+
         function addZone() {
             vm.zones.push({
                 zone_descr: "",
@@ -119,7 +160,7 @@
 
         function addZoneSection(){
             vm.sections.push({
-                section_descr: "",
+                section_desc: "",
                 zone_descr: "",
                 level_descr: "",
                 zone_plus:""
@@ -139,6 +180,32 @@
                 config_descr: "",
                 venue_id:""
             });
+        }
+
+        function addZoneEvent() {
+            vm.zoneEvents.push({
+                event_id: "",
+                zone_id: "",
+                qty_to_broadcast: "",
+                zone_base_price: ""
+            })
+        }
+
+        function addSectionEvent() {
+            vm.sectionEvents.push({
+                section_id: "",
+                event_id: "",
+                section_price_offset_pct: "",
+                venue_config_id: ""
+            })
+        }
+
+        function addRowEvent() {
+            vm.rowEvents.push({
+                row_id: "",
+                event_id: "",
+                row_price_offset_pct: ""
+            })
         }
     }
 })();

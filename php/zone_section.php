@@ -6,8 +6,8 @@
    //$level_plus = explode(",", $item->level_id_plus);
    $zone_descr = $item->zone_descr;
    $zone_plus = explode(",", $item->zone_plus);
-   $descr = $item->section_descr;
-   $sql = "INSERT INTO zone_section(section_descr,zone_id,level_id) SELECT '$descr',zone_id,level_id
+   $descr = $item->section_desc;
+   $sql = "INSERT INTO zone_section(section_desc,zone_id,level_id) SELECT '$descr',zone_id,level_id
            FROM zone, level, venue_configuration, venue
            WHERE zone_descr = '$zone_descr'
            AND level_descr = '$level_descr'
